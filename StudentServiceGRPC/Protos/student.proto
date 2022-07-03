@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "StudentServiceGRPC";
+
+package student;
+
+// The service definition.
+service StudentGRPCService {
+   rpc AddStudentStream(stream StudentRequest) returns (StudentResponse);
+}
+
+// The request message
+message StudentRequest {
+  int32 studentId = 1;
+  string name = 2;
+}
+
+// The response message
+message StudentResponse {
+  string message = 1;
+}
