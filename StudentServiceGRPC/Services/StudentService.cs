@@ -25,4 +25,20 @@ public class StudentService : StudentGRPCService.StudentGRPCServiceBase
 
         return result;
     }
+
+    public override async Task<StudentReply> GetStudentList(StudentListRequest request, ServerCallContext context)
+    {
+        var studentList = new List<StudentResponse>{
+            new StudentResponse{Message = "Test1"},
+            new StudentResponse{Message = "Test2"},
+            new StudentResponse{Message = "Test3"}
+        };
+
+        studentList.ForEach( st => Console.WriteLine(st));
+        
+        var responseStudentList = new StudentReply();
+        responseStudentList.Students.AddRange(studentList);
+
+        return responseStudentList;
+    }
 }

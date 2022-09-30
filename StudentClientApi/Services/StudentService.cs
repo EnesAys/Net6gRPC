@@ -29,4 +29,15 @@ public class StudentService : IStudentService
 
         return response.Message;
     }
+        public async Task<StudentListResponse> GetStudentsAsync()
+    {
+        var response = new StudentListResponse{Students = new List<string>()};
+        var getStudentStream = _studentGRPCServiceClient.GetStudentList(new StudentListRequest());
+        foreach(var student in getStudentStream.Students)   
+        {
+            response.Students.Add(student.Message);
+        }
+
+        return response;
+    }
 }

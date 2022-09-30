@@ -20,4 +20,9 @@ public class StudentController : ControllerBase
     {         
         return Ok(await _studentService.InsertStudentsAsync(request));
     }
+     [HttpGet]
+    public async Task<IActionResult> GetStudents()
+    {         
+        return Ok(await _studentService.GetStudentsAsync());
+    }
 }

@@ -7,12 +7,21 @@ package student;
 // The service definition.
 service StudentGRPCService {
    rpc AddStudentStream(stream StudentRequest) returns (StudentResponse);
+   rpc GetStudentList(StudentListRequest) returns (StudentReply);
 }
 
 // The request message
 message StudentRequest {
   int32 studentId = 1;
   string name = 2;
+}
+// The request message
+message StudentListRequest {  
+}
+
+// The list response message
+message StudentReply {
+  repeated StudentResponse students = 1;
 }
 
 // The response message
